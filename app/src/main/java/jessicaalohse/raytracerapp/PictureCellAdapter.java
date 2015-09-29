@@ -26,6 +26,11 @@ public class PictureCellAdapter extends ArrayAdapter<PictureCell> {
     }
 
     @Override
+    public PictureCell getItem(int position) {
+        return cells.get(position);
+    }
+
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
