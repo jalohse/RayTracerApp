@@ -1,7 +1,7 @@
 package jessicaalohse.raytracerapp;
 
 import android.content.Context;
-import android.media.Image;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +37,7 @@ public class PictureCellAdapter extends ArrayAdapter<PictureCell> {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View cell = inflater.inflate(R.layout.picture_cell, parent, false);
         ImageView image = (ImageView) cell.findViewById(R.id.imageView);
-        PictureCell currentCell = cells.get(position);
+        final PictureCell currentCell = cells.get(position);
         image.setImageResource(currentCell.getImage());
         TextView text = (TextView) cell.findViewById(R.id.name);
         text.setText(currentCell.getName());
@@ -56,6 +56,14 @@ public class PictureCellAdapter extends ArrayAdapter<PictureCell> {
             getFile.setVisibility(View.VISIBLE);
             redo.setVisibility(View.VISIBLE);
         }
+        getFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), GeneratedImage.class);
+                intent.putExtra("PATH", currentCell.getPath().getAbsolutePath());
+                v.getContext().startActivity(intent);
+            }
+        });
         redo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
