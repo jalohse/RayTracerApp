@@ -12,12 +12,13 @@
         android:layout_weight="0.13" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Test name"
+        android:layout_width="95dp"
+        android:layout_height="match_parent"
+        android:text=" kljalksjdlkasjskaldjsaslasjdnakjhdsa00000"
         android:id="@+id/name"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.13" />
+        android:lines="100"
+        android:maxLines="100" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -16,6 +16,10 @@ import java.util.ArrayList;
 
 import images.Chapter2Image;
 import images.Chapter3Image;
+import images.Chapter3SecEdImage;
+import images.Chapter4Image;
+import images.Chapter5Image;
+import images.GlobeImage;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -37,6 +41,10 @@ public class MainActivityFragment extends Fragment {
         cells = new ArrayList<PictureCell>();
         cells.add(new PictureCell(R.drawable.chapter2image, "Chapter 2 Image"));
         cells.add(new PictureCell(R.drawable.chapter3image, "Chapter 3 Image"));
+        cells.add(new PictureCell(R.drawable.chapter3secondedimage, "Chapter 3 Second Edition Image"));
+        cells.add(new PictureCell(R.drawable.chapter4image, "Chapter 4 Image"));
+        cells.add(new PictureCell(R.drawable.chapter5image, "Chapter 5 Image"));
+        cells.add(new PictureCell(R.drawable.globeimage, "Globe Image"));
         adapter = new PictureCellAdapter(this.getActivity(), cells);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -66,6 +74,50 @@ public class MainActivityFragment extends Fragment {
                                 "Generating " + ((PictureCell) parent.getAdapter().getItem(position)).getName() + " took " + time,
                                 Toast.LENGTH_LONG).show();
                         generateInfo(cell, time, ch3image.getPath());
+                        break;
+                    case 2:
+                        Chapter3SecEdImage ch3secimage = new Chapter3SecEdImage(getOutputMediaFile("chapter3image.png"));
+                        while (ch3secimage.getTime() == 0) {
+                            spinner.setVisibility(View.VISIBLE);
+                        }
+                        time = ch3secimage.getTime() + " ms.";
+                        Toast.makeText(view.getContext(),
+                                "Generating " + ((PictureCell) parent.getAdapter().getItem(position)).getName() + " took " + time,
+                                Toast.LENGTH_LONG).show();
+                        generateInfo(cell, time, ch3secimage.getPath());
+                        break;
+                    case 3:
+                        Chapter4Image ch4 = new Chapter4Image(getOutputMediaFile("chapter4image.png"));
+                        while (ch4.getTime() == 0) {
+                            spinner.setVisibility(View.VISIBLE);
+                        }
+                        time = ch4.getTime() + " ms.";
+                        Toast.makeText(view.getContext(),
+                                "Generating " + ((PictureCell) parent.getAdapter().getItem(position)).getName() + " took " + time,
+                                Toast.LENGTH_LONG).show();
+                        generateInfo(cell, time, ch4.getPath());
+                        break;
+                    case 4:
+                        Chapter5Image ch5 = new Chapter5Image(getOutputMediaFile("chapter4image.png"));
+                        while (ch5.getTime() == 0) {
+                            spinner.setVisibility(View.VISIBLE);
+                        }
+                        time = ch5.getTime() + " ms.";
+                        Toast.makeText(view.getContext(),
+                                "Generating " + ((PictureCell) parent.getAdapter().getItem(position)).getName() + " took " + time,
+                                Toast.LENGTH_LONG).show();
+                        generateInfo(cell, time, ch5.getPath());
+                        break;
+                    case 5:
+                        GlobeImage globe = new GlobeImage(getOutputMediaFile("chapter4image.png"));
+                        while (globe.getTime() == 0) {
+                            spinner.setVisibility(View.VISIBLE);
+                        }
+                        time = globe.getTime() + " ms.";
+                        Toast.makeText(view.getContext(),
+                                "Generating " + ((PictureCell) parent.getAdapter().getItem(position)).getName() + " took " + time,
+                                Toast.LENGTH_LONG).show();
+                        generateInfo(cell, time, globe.getPath());
                         break;
                 }
             }
