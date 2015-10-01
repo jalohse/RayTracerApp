@@ -15,7 +15,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Test name"
-        android:id="@+id/textView"
+        android:id="@+id/name"
         android:layout_gravity="center_horizontal"
+        android:layout_weight="0.13" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Time"
+        android:id="@+id/time"
+        android:layout_weight="0.13"
+        android:layout_gravity="bottom"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open file"
+        android:id="@+id/file_open"
+        android:layout_weight="0.13"
+        android:layout_gravity="end"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Redo"
+        android:id="@+id/button"
         android:layout_weight="0.13" />
 </LinearLayout>

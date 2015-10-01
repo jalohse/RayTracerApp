@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -38,8 +39,31 @@ public class PictureCellAdapter extends ArrayAdapter<PictureCell> {
         ImageView image = (ImageView) cell.findViewById(R.id.imageView);
         PictureCell currentCell = cells.get(position);
         image.setImageResource(currentCell.getImage());
-        TextView text = (TextView) cell.findViewById(R.id.textView);
+        TextView text = (TextView) cell.findViewById(R.id.name);
         text.setText(currentCell.getName());
+        final TextView time = (TextView) cell.findViewById(R.id.time);
+        if(currentCell.getTime() != null){
+            time.setText(currentCell.getTime());
+        } else {
+            time.setVisibility(View.INVISIBLE);
+        }
+        final Button getFile = (Button) cell.findViewById(R.id.file_open);
+        final Button redo = (Button) cell.findViewById(R.id.button);
+        if(currentCell.getPath() == null){
+            getFile.setVisibility(View.INVISIBLE);
+            redo.setVisibility(View.INVISIBLE);
+        } else {
+            getFile.setVisibility(View.VISIBLE);
+            redo.setVisibility(View.VISIBLE);
+        }
+        redo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                time.setVisibility(View.INVISIBLE);
+                getFile.setVisibility(View.INVISIBLE);
+                redo.setVisibility(View.INVISIBLE);
+            }
+        });
         return cell;
     }
 }

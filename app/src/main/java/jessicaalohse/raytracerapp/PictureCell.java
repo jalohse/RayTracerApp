@@ -2,6 +2,8 @@ package jessicaalohse.raytracerapp;
 
 import android.media.Image;
 
+import java.io.File;
+
 /**
  * Created by jessicalohse on 9/28/15.
  */
@@ -30,6 +32,22 @@ public class PictureCell {
 
     private int image;
     private String name;
+    private File path;
+    private String time;
 
+    public File getPath() {
+        return path;
+    }
 
+    public void setPath(File path) {
+        this.path = path;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 }

@@ -1,6 +1,10 @@
 package images;
 
+import android.graphics.Bitmap;
+import android.os.Environment;
+
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import me.jessicaalohse.raytracer.utilities.*;
@@ -18,11 +22,13 @@ public class Image {
         private Light light;
         private Camera camera;
         private float ambience;
+        private File path;
 
-        public Image(int rows, int columns) {
+        public Image(int rows, int columns, File path) {
             this.rows = rows;
             this.columns = columns;
             this.image = new RGB[columns][rows];
+            this.path = path;
         }
 
         public void addSurface(Surface surface) {
@@ -104,27 +110,17 @@ public class Image {
             image = pixels;
         }
 
-        public void printImage(String imageName) throws IOException {
-            BufferedImage img = new BufferedImage(columns, rows,
-                    BufferedImage.TYPE_INT_RGB);
+        public void printImage() throws IOException {
+            Bitmap img = Bitmap.createBitmap(columns, rows, Bitmap.Config.ARGB_8888);
             for (int i = 0; i < rows; i++) {
                 for (int j = 0; j < columns; j++) {
                     RGB rgb = image[i][j];
-                    int color = (rgb.red << 16) | (rgb.green << 8) | rgb.blue;
-                    img.setRGB(j, i, color);
+                    int color = android.graphics.Color.rgb(rgb.red, rgb.green, rgb.blue);
+                    img.setPixel(j, i, color);
                 }
             }
-            File file;
-            if (imageName == null || imageName.isEmpty()) {
-                file = new File("image.png");
-            } else {
-                file = new File(imageName.concat(".png"));
-            }
-            ImageIO.write(img, "PNG", file);
-        }
-
-        public void printImage() throws IOException {
-            this.printImage("");
+            FileOutputStream fos = new FileOutputStream(path);
+            img.compress(Bitmap.CompressFormat.PNG, 90, fos);
         }
 
         public int getRows() {
@@ -135,8 +131,6 @@ public class Image {
             return columns;
         }
 
-
-
     }
 
-}
+

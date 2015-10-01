@@ -2,6 +2,7 @@ package images;
 
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.IOException;
 
 import me.jessicaalohse.raytracer.utilities.*;
@@ -16,10 +17,12 @@ public class TestImage {
 
         int rowsColumns = 101;
         long milliseconds;
+        private File path;
 
-        public TestImage() {
+        public TestImage(File path) {
+            this.path = path;
             long start = System.currentTimeMillis();
-            Image image = new Image(rowsColumns, rowsColumns);
+            Image image = new Image(rowsColumns, rowsColumns, path);
             Sphere sphere = new Sphere(0, 0, -150, 100.1f, new RGB(215, 215, 215),
                     0);
             Triangle triangle = new Triangle(new double[] { 0, 0, -100 },
@@ -29,7 +32,7 @@ public class TestImage {
             image.addSurface(triangle);
             image.createImage();
             try {
-                image.printImage("Chapter2Image");
+                image.printImage();
                 milliseconds = System.currentTimeMillis() - start;
             } catch (IOException e) {
                 e.printStackTrace();
@@ -38,5 +41,9 @@ public class TestImage {
 
     public long getTime(){
         return milliseconds;
+    }
+
+    public File getPath() {
+        return path;
     }
 }
