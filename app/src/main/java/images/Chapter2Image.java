@@ -13,13 +13,13 @@ import me.jessicaalohse.raytracer.shapes.*;
 /**
  * Created by jessicalohse on 9/28/15.
  */
-public class TestImage {
+public class Chapter2Image {
 
         int rowsColumns = 101;
         long milliseconds;
         private File path;
 
-        public TestImage(File path) {
+        public Chapter2Image(File path) {
             this.path = path;
             long start = System.currentTimeMillis();
             Image image = new Image(rowsColumns, rowsColumns, path);
