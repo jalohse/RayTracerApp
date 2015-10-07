@@ -109,7 +109,7 @@ public class MainActivityFragment extends Fragment {
                         generateInfo(cell, time, ch5.getPath());
                         break;
                     case 5:
-                        GlobeImage globe = new GlobeImage(getOutputMediaFile("chapter4image.png"));
+                        GlobeImage globe = new GlobeImage(getContext().getResources(), getOutputMediaFile("chapter4image.png"), getOutputMediaFile("texture.png"));
                         while (globe.getTime() == 0) {
                             spinner.setVisibility(View.VISIBLE);
                         }

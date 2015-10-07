@@ -1,7 +1,6 @@
 package images;
 
 import android.graphics.Bitmap;
-import android.os.Environment;
 
 import java.io.File;
 import java.io.FileOutputStream;
