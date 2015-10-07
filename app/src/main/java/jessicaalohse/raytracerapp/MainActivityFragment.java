@@ -59,10 +59,7 @@ public class MainActivityFragment extends Fragment {
                             spinner.setVisibility(View.VISIBLE);
                         }
                         time = image.getTime() + " ms.";
-                        Toast.makeText(view.getContext(),
-                                "Generating " + ((PictureCell) parent.getAdapter().getItem(position)).getName() + " took " + time,
-                                Toast.LENGTH_LONG).show();
-                        generateInfo(cell, time, image.getPath());
+                        generateInfo(view, cell, time, image.getPath());
                         break;
                     case 1:
                         Chapter3Image ch3image = new Chapter3Image(getOutputMediaFile("chapter3image.png"));
@@ -70,10 +67,7 @@ public class MainActivityFragment extends Fragment {
                             spinner.setVisibility(View.VISIBLE);
                         }
                         time = ch3image.getTime() + " ms.";
-                        Toast.makeText(view.getContext(),
-                                "Generating " + ((PictureCell) parent.getAdapter().getItem(position)).getName() + " took " + time,
-                                Toast.LENGTH_LONG).show();
-                        generateInfo(cell, time, ch3image.getPath());
+                        generateInfo(view, cell, time, ch3image.getPath());
                         break;
                     case 2:
                         Chapter3SecEdImage ch3secimage = new Chapter3SecEdImage(getOutputMediaFile("chapter3image.png"));
@@ -81,10 +75,7 @@ public class MainActivityFragment extends Fragment {
                             spinner.setVisibility(View.VISIBLE);
                         }
                         time = ch3secimage.getTime() + " ms.";
-                        Toast.makeText(view.getContext(),
-                                "Generating " + ((PictureCell) parent.getAdapter().getItem(position)).getName() + " took " + time,
-                                Toast.LENGTH_LONG).show();
-                        generateInfo(cell, time, ch3secimage.getPath());
+                        generateInfo(view, cell, time, ch3secimage.getPath());
                         break;
                     case 3:
                         Chapter4Image ch4 = new Chapter4Image(getOutputMediaFile("chapter4image.png"));
@@ -92,10 +83,7 @@ public class MainActivityFragment extends Fragment {
                             spinner.setVisibility(View.VISIBLE);
                         }
                         time = ch4.getTime() + " ms.";
-                        Toast.makeText(view.getContext(),
-                                "Generating " + ((PictureCell) parent.getAdapter().getItem(position)).getName() + " took " + time,
-                                Toast.LENGTH_LONG).show();
-                        generateInfo(cell, time, ch4.getPath());
+                        generateInfo(view, cell, time, ch4.getPath());
                         break;
                     case 4:
                         Chapter5Image ch5 = new Chapter5Image(getOutputMediaFile("chapter4image.png"));
@@ -103,21 +91,15 @@ public class MainActivityFragment extends Fragment {
                             spinner.setVisibility(View.VISIBLE);
                         }
                         time = ch5.getTime() + " ms.";
-                        Toast.makeText(view.getContext(),
-                                "Generating " + ((PictureCell) parent.getAdapter().getItem(position)).getName() + " took " + time,
-                                Toast.LENGTH_LONG).show();
-                        generateInfo(cell, time, ch5.getPath());
+                        generateInfo(view, cell, time, ch5.getPath());
                         break;
                     case 5:
-                        GlobeImage globe = new GlobeImage(getContext().getResources(), getOutputMediaFile("chapter4image.png"), getOutputMediaFile("texture.png"));
+                        GlobeImage globe = new GlobeImage(getActivity().getApplicationContext().getResources(), getOutputMediaFile("chapter4image.png"), getOutputMediaFile("texture.png"));
                         while (globe.getTime() == 0) {
                             spinner.setVisibility(View.VISIBLE);
                         }
                         time = globe.getTime() + " ms.";
-                        Toast.makeText(view.getContext(),
-                                "Generating " + ((PictureCell) parent.getAdapter().getItem(position)).getName() + " took " + time,
-                                Toast.LENGTH_LONG).show();
-                        generateInfo(cell, time, globe.getPath());
+                        generateInfo(view, cell, time, globe.getPath());
                         break;
                 }
             }
@@ -125,7 +107,10 @@ public class MainActivityFragment extends Fragment {
         return view;
     }
 
-    private void generateInfo(PictureCell cell, String time, File bitmap){
+    private void generateInfo(View view, PictureCell cell, String time, File bitmap){
+        Toast.makeText(view.getContext(),
+                "Generating " + cell.getName() + " took " + time,
+                Toast.LENGTH_LONG).show();
         cell.setPath(bitmap);
         cell.setTime(time);
         adapter.notifyDataSetChanged();
@@ -133,7 +118,7 @@ public class MainActivityFragment extends Fragment {
 
     private File getOutputMediaFile(String name) {
         File mediaStorageDirectory = new File(Environment.getExternalStorageDirectory() +
-                "/Android/data" + getActivity().getApplicationContext().getPackageName() + "/Files");
+                "/Android/data/" + getActivity().getApplicationContext().getPackageName() + "/Files");
         if(!mediaStorageDirectory.exists()){
             mediaStorageDirectory.mkdirs();
         }

@@ -3,8 +3,8 @@ package images;
 import java.io.File;
 import java.io.IOException;
 
-import me.jessicaalohse.raytracer.shapes.*;
-import me.jessicaalohse.raytracer.utilities.*;
+import raytracer.utilities.*;
+import raytracer.shapes.*;
 
 /**
  * Created by jessicalohse on 10/1/15.

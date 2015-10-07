@@ -1,10 +1,11 @@
 package images;
 
-import me.jessicaalohse.raytracer.utilities.*;
+
 import java.io.File;
 import java.io.IOException;
 
-import me.jessicaalohse.raytracer.shapes.*;
+import raytracer.shapes.*;
+import raytracer.utilities.*;
 
 /**
  * Created by jessicalohse on 10/1/15.

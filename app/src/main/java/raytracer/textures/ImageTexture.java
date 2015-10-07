@@ -1,4 +1,4 @@
-package images;
+package raytracer.textures;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -6,11 +6,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 
 import java.io.File;
-import java.io.IOException;
-
-import jessicaalohse.raytracerapp.R;
-import me.jessicaalohse.raytracer.textures.*;
-import me.jessicaalohse.raytracer.utilities.*;
+import raytracer.utilities.Image;
+import raytracer.utilities.RGB;
+import raytracer.utilities.Vector2D;
+import raytracer.utilities.Vector3D;
 
 /**
  * Created by jessicalohse on 10/7/15.
@@ -30,15 +29,15 @@ public class ImageTexture implements Texture {
 
     public RGB[][] getPixelsFromImage(Bitmap image) {
         RGB[][] pixels = new RGB[image.getHeight()][image.getWidth()];
-        for(int i = 0; i < image.getHeight(); i++){
-            for(int j = 0; j < image.getWidth(); j++){
+        for(int i = 0; i < image.getWidth(); i++){
+            for(int j = 0; j < image.getHeight(); j++){
                 int pixel = image.getPixel(i, j);
                 int red = Color.red(pixel);
                 int green = Color.green(pixel);
                 int blue = Color.blue(pixel);
                 RGB color = new RGB(red, green, blue);
                 color.clamp();
-                pixels[i][j] = color;
+                pixels[j][i] = color;
             }
         }
         return pixels;

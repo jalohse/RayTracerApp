@@ -1,13 +1,12 @@
 package images;
 
-import android.widget.Toast;
-
 import java.io.File;
 import java.io.IOException;
 
-import me.jessicaalohse.raytracer.utilities.*;
-import me.jessicaalohse.raytracer.shapes.*;
-
+import raytracer.shapes.Sphere;
+import raytracer.shapes.Triangle;
+import raytracer.utilities.Image;
+import raytracer.utilities.RGB;
 
 
 /**

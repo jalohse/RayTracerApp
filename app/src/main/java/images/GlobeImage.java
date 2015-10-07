@@ -6,9 +6,10 @@ import java.io.File;
 import java.io.IOException;
 
 import jessicaalohse.raytracerapp.R;
-import me.jessicaalohse.raytracer.shapes.*;
-import me.jessicaalohse.raytracer.textures.*;
-import me.jessicaalohse.raytracer.utilities.*;
+
+import raytracer.textures.*;
+import raytracer.utilities.*;
+import raytracer.shapes.*;
 
 /**
  * Created by jessicalohse on 10/1/15.
@@ -25,7 +26,7 @@ public class GlobeImage {
         Image image = new Image(rowsColumns, rowsColumns, path);
         Sphere sphere = new Sphere(500, 500, -1500, 500f, new RGB(215, 215, 215),
                 0);
-        sphere.addTexture(new ImageTexture(res, R.drawable.map, texturepath));
+        sphere.addTexture(new ImageTexture(res, R.drawable.map2, texturepath));
         image.addSurface(sphere);
         image.createImage();
         try {

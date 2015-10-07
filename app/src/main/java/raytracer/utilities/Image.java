@@ -1,4 +1,4 @@
-package images;
+package raytracer.utilities;
 
 import android.graphics.Bitmap;
 
@@ -6,8 +6,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import me.jessicaalohse.raytracer.utilities.*;
-import me.jessicaalohse.raytracer.shapes.*;
+import raytracer.shapes.Sphere;
+import raytracer.shapes.Surface;
+import raytracer.shapes.SurfaceList;
+import raytracer.shapes.Triangle;
+
 
 /**
  * Created by jessicalohse on 9/28/15.
