@@ -35,8 +35,6 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_main, container, false);
-        final ProgressBar spinner = (ProgressBar)view.findViewById(R.id.progressBar);
-        spinner.setVisibility(View.GONE);
         ListView list = (ListView) view.findViewById(R.id.listView);
         cells = new ArrayList<PictureCell>();
         cells.add(new PictureCell(R.drawable.chapter2image, "Chapter 2 Image"));
@@ -55,49 +53,31 @@ public class MainActivityFragment extends Fragment {
                 switch (position) {
                     case 0:
                         Chapter2Image image = new Chapter2Image(getOutputMediaFile("chapter2image.png"));
-                        while (image.getTime() == 0) {
-                            spinner.setVisibility(View.VISIBLE);
-                        }
                         time = image.getTime() + " ms.";
                         generateInfo(view, cell, time, image.getPath());
                         break;
                     case 1:
                         Chapter3Image ch3image = new Chapter3Image(getOutputMediaFile("chapter3image.png"));
-                        while (ch3image.getTime() == 0) {
-                            spinner.setVisibility(View.VISIBLE);
-                        }
                         time = ch3image.getTime() + " ms.";
                         generateInfo(view, cell, time, ch3image.getPath());
                         break;
                     case 2:
                         Chapter3SecEdImage ch3secimage = new Chapter3SecEdImage(getOutputMediaFile("chapter3image.png"));
-                        while (ch3secimage.getTime() == 0) {
-                            spinner.setVisibility(View.VISIBLE);
-                        }
                         time = ch3secimage.getTime() + " ms.";
                         generateInfo(view, cell, time, ch3secimage.getPath());
                         break;
                     case 3:
                         Chapter4Image ch4 = new Chapter4Image(getOutputMediaFile("chapter4image.png"));
-                        while (ch4.getTime() == 0) {
-                            spinner.setVisibility(View.VISIBLE);
-                        }
                         time = ch4.getTime() + " ms.";
                         generateInfo(view, cell, time, ch4.getPath());
                         break;
                     case 4:
                         Chapter5Image ch5 = new Chapter5Image(getOutputMediaFile("chapter4image.png"));
-                        while (ch5.getTime() == 0) {
-                            spinner.setVisibility(View.VISIBLE);
-                        }
                         time = ch5.getTime() + " ms.";
                         generateInfo(view, cell, time, ch5.getPath());
                         break;
                     case 5:
                         GlobeImage globe = new GlobeImage(getActivity().getApplicationContext().getResources(), getOutputMediaFile("chapter4image.png"), getOutputMediaFile("texture.png"));
-                        while (globe.getTime() == 0) {
-                            spinner.setVisibility(View.VISIBLE);
-                        }
                         time = globe.getTime() + " ms.";
                         generateInfo(view, cell, time, globe.getPath());
                         break;
