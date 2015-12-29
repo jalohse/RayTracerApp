@@ -12,7 +12,7 @@ import raytracer.utilities.RGB;
 /**
  * Created by jessicalohse on 9/28/15.
  */
-public class Chapter2Image {
+public class Chapter2Image implements GenericImage{
 
         int rowsColumns = 101;
         long milliseconds;

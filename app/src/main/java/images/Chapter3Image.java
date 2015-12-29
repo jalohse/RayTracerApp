@@ -7,10 +7,11 @@ import java.io.IOException;
 import raytracer.shapes.*;
 import raytracer.utilities.*;
 
+
 /**
  * Created by jessicalohse on 10/1/15.
  */
-public class Chapter3Image {
+public class Chapter3Image implements GenericImage {
     int rowsColumns = 101;
     long milliseconds;
     private File path;

@@ -9,7 +9,7 @@ import raytracer.utilities.*;
 /**
  * Created by jessicalohse on 10/1/15.
  */
-public class Chapter3SecEdImage {
+public class Chapter3SecEdImage implements GenericImage{
 
     int rowsColumns = 500;
     long milliseconds;

@@ -19,6 +19,7 @@ import images.Chapter3Image;
 import images.Chapter3SecEdImage;
 import images.Chapter4Image;
 import images.Chapter5Image;
+import images.GenericImage;
 import images.GlobeImage;
 
 /**
@@ -49,37 +50,30 @@ public class MainActivityFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 PictureCell cell = cells.get(position);
-                String time;
                 switch (position) {
                     case 0:
                         Chapter2Image image = new Chapter2Image(getOutputMediaFile("chapter2image.png"));
-                        time = image.getTime() + " ms.";
-                        generateInfo(view, cell, time, image.getPath());
+                        generateInfo(image, view, cell);
                         break;
                     case 1:
                         Chapter3Image ch3image = new Chapter3Image(getOutputMediaFile("chapter3image.png"));
-                        time = ch3image.getTime() + " ms.";
-                        generateInfo(view, cell, time, ch3image.getPath());
+                        generateInfo(ch3image, view, cell);
                         break;
                     case 2:
                         Chapter3SecEdImage ch3secimage = new Chapter3SecEdImage(getOutputMediaFile("chapter3image.png"));
-                        time = ch3secimage.getTime() + " ms.";
-                        generateInfo(view, cell, time, ch3secimage.getPath());
+                        generateInfo(ch3secimage, view, cell);
                         break;
                     case 3:
                         Chapter4Image ch4 = new Chapter4Image(getOutputMediaFile("chapter4image.png"));
-                        time = ch4.getTime() + " ms.";
-                        generateInfo(view, cell, time, ch4.getPath());
+                        generateInfo(ch4, view, cell);
                         break;
                     case 4:
                         Chapter5Image ch5 = new Chapter5Image(getOutputMediaFile("chapter4image.png"));
-                        time = ch5.getTime() + " ms.";
-                        generateInfo(view, cell, time, ch5.getPath());
+                        generateInfo(ch5, view, cell);
                         break;
                     case 5:
                         GlobeImage globe = new GlobeImage(getActivity().getApplicationContext().getResources(), getOutputMediaFile("chapter4image.png"), getOutputMediaFile("texture.png"));
-                        time = globe.getTime() + " ms.";
-                        generateInfo(view, cell, time, globe.getPath());
+                        generateInfo(globe, view, cell);
                         break;
                 }
             }
@@ -87,11 +81,12 @@ public class MainActivityFragment extends Fragment {
         return view;
     }
 
-    private void generateInfo(View view, PictureCell cell, String time, File bitmap){
+    private void generateInfo(GenericImage image, View view, PictureCell cell){
+        String time = image.getTime() + " ms.";
         Toast.makeText(view.getContext(),
                 "Generating " + cell.getName() + " took " + time,
                 Toast.LENGTH_LONG).show();
-        cell.setPath(bitmap);
+        cell.setPath(image.getPath());
         cell.setTime(time);
         adapter.notifyDataSetChanged();
     }
@@ -102,6 +97,6 @@ public class MainActivityFragment extends Fragment {
         if(!mediaStorageDirectory.exists()){
             mediaStorageDirectory.mkdirs();
         }
-        return new File(mediaStorageDirectory.getPath() + File.separator +name);
+        return new File(mediaStorageDirectory.getPath() + File.separator + name);
     }
 }

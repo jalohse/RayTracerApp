@@ -14,7 +14,7 @@ import raytracer.shapes.*;
 /**
  * Created by jessicalohse on 10/1/15.
  */
-public class GlobeImage {
+public class GlobeImage implements GenericImage{
 
     int rowsColumns = 1001;
     long milliseconds;

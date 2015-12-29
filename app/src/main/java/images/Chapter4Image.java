@@ -9,7 +9,7 @@ import raytracer.shapes.*;
 /**
  * Created by jessicalohse on 10/1/15.
  */
-public class Chapter4Image {
+public class Chapter4Image implements GenericImage{
 
     int rowsColumns = 101;
     long milliseconds;
