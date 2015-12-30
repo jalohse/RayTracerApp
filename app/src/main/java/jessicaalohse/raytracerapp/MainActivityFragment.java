@@ -8,19 +8,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
 
-import images.Chapter2Image;
-import images.Chapter3Image;
-import images.Chapter3SecEdImage;
-import images.Chapter4Image;
-import images.Chapter5Image;
 import images.GenericImage;
-import images.GlobeImage;
+import images.object.tests.ElevenObjectImage;
+import images.object.tests.OneObjectImage;
+import images.object.tests.SixteenObjectImage;
+import images.object.tests.SnowImage;
+import images.object.tests.ThreeObjectImage;
+import images.object.tests.TwentyOneObjectImage;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -38,12 +37,12 @@ public class MainActivityFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_main, container, false);
         ListView list = (ListView) view.findViewById(R.id.listView);
         cells = new ArrayList<PictureCell>();
-        cells.add(new PictureCell(R.drawable.chapter2image, "Chapter 2 Image"));
-        cells.add(new PictureCell(R.drawable.chapter3image, "Chapter 3 Image"));
-        cells.add(new PictureCell(R.drawable.chapter3secondedimage, "Chapter 3 Second Edition Image"));
-        cells.add(new PictureCell(R.drawable.chapter4image, "Chapter 4 Image"));
-        cells.add(new PictureCell(R.drawable.chapter5image, "Chapter 5 Image"));
-        cells.add(new PictureCell(R.drawable.globeimage, "Globe Image"));
+        cells.add(new PictureCell(R.drawable.otoneobject, "One Object"));
+        cells.add(new PictureCell(R.drawable.otthreeobject, "Three Objects"));
+        cells.add(new PictureCell(R.drawable.otelevenobject, "Eleven Objects"));
+        cells.add(new PictureCell(R.drawable.otsixteenobject, "Sixteen Objects"));
+        cells.add(new PictureCell(R.drawable.ottwentyoneobject, "Twenty One Objects"));
+        cells.add(new PictureCell(R.drawable.otsnowimage, "Snowman"));
         adapter = new PictureCellAdapter(this.getActivity(), cells);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -52,28 +51,28 @@ public class MainActivityFragment extends Fragment {
                 PictureCell cell = cells.get(position);
                 switch (position) {
                     case 0:
-                        Chapter2Image image = new Chapter2Image(getOutputMediaFile(cell.getFileName()));
+                        OneObjectImage image = new OneObjectImage(getOutputMediaFile(cell.getFileName()));
                         generateInfo(image, view, cell);
                         break;
                     case 1:
-                        Chapter3Image ch3image = new Chapter3Image(getOutputMediaFile(cell.getFileName()));
-                        generateInfo(ch3image, view, cell);
+                        ThreeObjectImage threeImg = new ThreeObjectImage(getOutputMediaFile(cell.getFileName()));
+                        generateInfo(threeImg, view, cell);
                         break;
                     case 2:
-                        Chapter3SecEdImage ch3secimage = new Chapter3SecEdImage(getOutputMediaFile(cell.getFileName()));
-                        generateInfo(ch3secimage, view, cell);
+                        ElevenObjectImage elevenImg = new ElevenObjectImage(getOutputMediaFile(cell.getFileName()));
+                        generateInfo(elevenImg, view, cell);
                         break;
                     case 3:
-                        Chapter4Image ch4 = new Chapter4Image(getOutputMediaFile(cell.getFileName()));
-                        generateInfo(ch4, view, cell);
+                        SixteenObjectImage sixteenImg = new SixteenObjectImage(getOutputMediaFile(cell.getFileName()));
+                        generateInfo(sixteenImg, view, cell);
                         break;
                     case 4:
-                        Chapter5Image ch5 = new Chapter5Image(getOutputMediaFile(cell.getFileName()));
-                        generateInfo(ch5, view, cell);
+                        TwentyOneObjectImage twentyOneImg = new TwentyOneObjectImage(getOutputMediaFile(cell.getFileName()));
+                        generateInfo(twentyOneImg, view, cell);
                         break;
                     case 5:
-                        GlobeImage globe = new GlobeImage(getActivity().getApplicationContext().getResources(), getOutputMediaFile(cell.getFileName()), getOutputMediaFile("texture.png"));
-                        generateInfo(globe, view, cell);
+                        SnowImage snow = new SnowImage(getOutputMediaFile(cell.getFileName()));
+                        generateInfo(snow, view, cell);
                         break;
                 }
             }
