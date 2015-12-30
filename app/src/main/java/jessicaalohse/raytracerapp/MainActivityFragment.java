@@ -23,6 +23,10 @@ import images.object.tests.TwentyOneObjectImage;
 import images.size.tests.LargeImage;
 import images.size.tests.MediumImage;
 import images.size.tests.SmallImage;
+import images.surface.tests.SphereImage;
+import images.surface.tests.TriangleImage;
+import images.surface.tests.TwoSphereImage;
+import images.surface.tests.TwoTriangleImage;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -53,50 +57,61 @@ public class MainActivityFragment extends Fragment {
         cells.add(new PictureCell(R.drawable.stmediumimage, "Medium Image"));
         cells.add(new PictureCell(R.drawable.stlargeimage, "Large Image"));
 
+        // surface tests
+        cells.add(new PictureCell(R.drawable.sphereimage, "Sphere Image"));
+        cells.add(new PictureCell(R.drawable.triangleimage, "Triangle Image"));
+        cells.add(new PictureCell(R.drawable.twosphereimage, "Two Sphere Image"));
+        cells.add(new PictureCell(R.drawable.twotriangleimage, "Two Triangle Image"));
+
         adapter = new PictureCellAdapter(this.getActivity(), cells);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 PictureCell cell = cells.get(position);
+                GenericImage img = null;
                 switch (position) {
                     case 0:
-                        OneObjectImage image = new OneObjectImage(getOutputMediaFile(cell.getFileName()));
-                        generateInfo(image, view, cell);
+                        img = new OneObjectImage(getOutputMediaFile(cell.getFileName()));
                         break;
                     case 1:
-                        ThreeObjectImage threeImg = new ThreeObjectImage(getOutputMediaFile(cell.getFileName()));
-                        generateInfo(threeImg, view, cell);
+                        img = new ThreeObjectImage(getOutputMediaFile(cell.getFileName()));
                         break;
                     case 2:
-                        ElevenObjectImage elevenImg = new ElevenObjectImage(getOutputMediaFile(cell.getFileName()));
-                        generateInfo(elevenImg, view, cell);
+                        img = new ElevenObjectImage(getOutputMediaFile(cell.getFileName()));
                         break;
                     case 3:
-                        SixteenObjectImage sixteenImg = new SixteenObjectImage(getOutputMediaFile(cell.getFileName()));
-                        generateInfo(sixteenImg, view, cell);
+                        img = new SixteenObjectImage(getOutputMediaFile(cell.getFileName()));
                         break;
                     case 4:
-                        TwentyOneObjectImage twentyOneImg = new TwentyOneObjectImage(getOutputMediaFile(cell.getFileName()));
-                        generateInfo(twentyOneImg, view, cell);
+                        img = new TwentyOneObjectImage(getOutputMediaFile(cell.getFileName()));
                         break;
                     case 5:
-                        SnowImage snow = new SnowImage(getOutputMediaFile(cell.getFileName()));
-                        generateInfo(snow, view, cell);
+                        img = new SnowImage(getOutputMediaFile(cell.getFileName()));
                         break;
                     case 6:
-                        SmallImage smImg = new SmallImage(getOutputMediaFile(cell.getFileName()));
-                        generateInfo(smImg, view, cell);
+                        img = new SmallImage(getOutputMediaFile(cell.getFileName()));
                         break;
                     case 7:
-                        MediumImage mdImg = new MediumImage(getOutputMediaFile(cell.getFileName()));
-                        generateInfo(mdImg, view, cell);
+                        img = new MediumImage(getOutputMediaFile(cell.getFileName()));
                         break;
                     case 8:
-                        LargeImage lgImg = new LargeImage(getOutputMediaFile(cell.getFileName()));
-                        generateInfo(lgImg, view, cell);
+                        img = new LargeImage(getOutputMediaFile(cell.getFileName()));
+                        break;
+                    case 9:
+                        img = new SphereImage(getOutputMediaFile(cell.getFileName()));
+                        break;
+                    case 10:
+                        img = new TriangleImage(getOutputMediaFile(cell.getFileName()));
+                        break;
+                    case 11:
+                        img = new TwoSphereImage(getOutputMediaFile(cell.getFileName()));
+                        break;
+                    case 12:
+                        img = new TwoTriangleImage(getOutputMediaFile(cell.getFileName()));
                         break;
                 }
+                generateInfo(img, view, cell);
             }
         });
         return view;
