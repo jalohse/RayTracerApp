@@ -18,6 +18,8 @@ import images.color.tests.BlackAndWhiteImage;
 import images.color.tests.ColorImage;
 import images.color.tests.MarbleTextureImage;
 import images.color.tests.NoiseImage;
+import images.light.tests.LightImage;
+import images.light.tests.NoLightImage;
 import images.object.tests.ElevenObjectImage;
 import images.object.tests.OneObjectImage;
 import images.object.tests.SixteenObjectImage;
@@ -72,6 +74,10 @@ public class MainActivityFragment extends Fragment {
         cells.add(new PictureCell(R.drawable.ctcolored, "Colored Image"));
         cells.add(new PictureCell(R.drawable.ctmarble, "Marble Image"));
         cells.add(new PictureCell(R.drawable.ctnoise, "Noise Image"));
+
+        // light tests
+        cells.add(new PictureCell(R.drawable.ltnolightimage, "No Light Image"));
+        cells.add(new PictureCell(R.drawable.ltonelightimage, "Light Image"));
 
         adapter = new PictureCellAdapter(this.getActivity(), cells);
         list.setAdapter(adapter);
@@ -131,6 +137,12 @@ public class MainActivityFragment extends Fragment {
                         break;
                     case 16:
                         img = new NoiseImage(getOutputMediaFile(cell.getFileName()));
+                        break;
+                    case 17:
+                        img = new NoLightImage(getOutputMediaFile(cell.getFileName()));
+                        break;
+                    case 18:
+                        img = new LightImage(getOutputMediaFile(cell.getFileName()));
                         break;
                 }
                 generateInfo(img, view, cell);
