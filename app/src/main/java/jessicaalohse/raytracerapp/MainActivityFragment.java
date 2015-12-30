@@ -20,6 +20,9 @@ import images.object.tests.SixteenObjectImage;
 import images.object.tests.SnowImage;
 import images.object.tests.ThreeObjectImage;
 import images.object.tests.TwentyOneObjectImage;
+import images.size.tests.LargeImage;
+import images.size.tests.MediumImage;
+import images.size.tests.SmallImage;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -37,12 +40,19 @@ public class MainActivityFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_main, container, false);
         ListView list = (ListView) view.findViewById(R.id.listView);
         cells = new ArrayList<PictureCell>();
+        // obj tests
         cells.add(new PictureCell(R.drawable.otoneobject, "One Object"));
         cells.add(new PictureCell(R.drawable.otthreeobject, "Three Objects"));
         cells.add(new PictureCell(R.drawable.otelevenobject, "Eleven Objects"));
         cells.add(new PictureCell(R.drawable.otsixteenobject, "Sixteen Objects"));
         cells.add(new PictureCell(R.drawable.ottwentyoneobject, "Twenty One Objects"));
         cells.add(new PictureCell(R.drawable.otsnowimage, "Snowman"));
+
+        //size tests
+        cells.add(new PictureCell(R.drawable.stsmallimage, "Small Image"));
+        cells.add(new PictureCell(R.drawable.stmediumimage, "Medium Image"));
+        cells.add(new PictureCell(R.drawable.stlargeimage, "Large Image"));
+
         adapter = new PictureCellAdapter(this.getActivity(), cells);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -73,6 +83,18 @@ public class MainActivityFragment extends Fragment {
                     case 5:
                         SnowImage snow = new SnowImage(getOutputMediaFile(cell.getFileName()));
                         generateInfo(snow, view, cell);
+                        break;
+                    case 6:
+                        SmallImage smImg = new SmallImage(getOutputMediaFile(cell.getFileName()));
+                        generateInfo(smImg, view, cell);
+                        break;
+                    case 7:
+                        MediumImage mdImg = new MediumImage(getOutputMediaFile(cell.getFileName()));
+                        generateInfo(mdImg, view, cell);
+                        break;
+                    case 8:
+                        LargeImage lgImg = new LargeImage(getOutputMediaFile(cell.getFileName()));
+                        generateInfo(lgImg, view, cell);
                         break;
                 }
             }
