@@ -1,6 +1,7 @@
 package jessicaalohse.raytracerapp;
 
 import android.app.Fragment;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.LayoutInflater;
@@ -33,6 +34,10 @@ import images.surface.tests.SphereImage;
 import images.surface.tests.TriangleImage;
 import images.surface.tests.TwoSphereImage;
 import images.surface.tests.TwoTriangleImage;
+import images.texture.tests.LargeTextureImage;
+import images.texture.tests.MediumTextureImage;
+import images.texture.tests.SmallTextureImage;
+import images.texture.tests.XSmallTextureImage;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -40,6 +45,7 @@ import images.surface.tests.TwoTriangleImage;
 public class MainActivityFragment extends Fragment {
     PictureCellAdapter adapter;
     ArrayList<PictureCell> cells;
+    Resources res = getActivity().getApplicationContext().getResources();
 
     public MainActivityFragment() {
     }
@@ -78,6 +84,12 @@ public class MainActivityFragment extends Fragment {
         // light tests
         cells.add(new PictureCell(R.drawable.ltnolightimage, "No Light Image"));
         cells.add(new PictureCell(R.drawable.ltonelightimage, "Light Image"));
+
+        // texture tests
+        cells.add(new PictureCell(R.drawable.ttlargeimage, "Large Texture Image"));
+        cells.add(new PictureCell(R.drawable.ttmediumimage, "Medium Texture Image"));
+        cells.add(new PictureCell(R.drawable.ttsmallimage, "Small Texture Image"));
+        cells.add(new PictureCell(R.drawable.ttxsmallimage, "X-Small Texture Image"));
 
         adapter = new PictureCellAdapter(this.getActivity(), cells);
         list.setAdapter(adapter);
@@ -143,6 +155,18 @@ public class MainActivityFragment extends Fragment {
                         break;
                     case 18:
                         img = new LightImage(getOutputMediaFile(cell.getFileName()));
+                        break;
+                    case 19:
+                        img = new LargeTextureImage(res, getOutputMediaFile(cell.getFileName()), getOutputMediaFile("lgtexture.png"));
+                        break;
+                    case 20:
+                        img = new MediumTextureImage(res, getOutputMediaFile(cell.getFileName()), getOutputMediaFile("mdtexture.png"));
+                        break;
+                    case 21:
+                        img = new SmallTextureImage(res, getOutputMediaFile(cell.getFileName()), getOutputMediaFile("smtexture.png"));
+                        break;
+                    case 22:
+                        img = new XSmallTextureImage(res, getOutputMediaFile(cell.getFileName()), getOutputMediaFile("xsmtexture.png"));
                         break;
                 }
                 generateInfo(img, view, cell);
