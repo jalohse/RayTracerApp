@@ -66,8 +66,8 @@ public class MainActivityFragment extends Fragment {
 
         //size tests
         cells.add(new PictureCell(R.drawable.stsmallimage, "Small Image"));
-        cells.add(new PictureCell(R.drawable.stmediumimage, "Medium Image"));
-        cells.add(new PictureCell(R.drawable.stlargeimage, "Large Image"));
+        cells.add(new PictureCell(R.drawable.stsmallimage, "Medium Image"));
+        cells.add(new PictureCell(R.drawable.stsmallimage, "Large Image"));
 
         // surface tests
         cells.add(new PictureCell(R.drawable.sutsphereimage, "Sphere Image"));
