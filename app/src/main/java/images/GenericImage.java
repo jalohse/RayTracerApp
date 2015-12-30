@@ -7,7 +7,6 @@ import java.io.File;
  */
 public interface GenericImage {
 
-    public long getTime();
-
-    public File getPath();
+    long getTime();
+    File getPath();
 }

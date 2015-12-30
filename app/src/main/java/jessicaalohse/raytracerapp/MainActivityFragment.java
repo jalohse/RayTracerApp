@@ -52,27 +52,27 @@ public class MainActivityFragment extends Fragment {
                 PictureCell cell = cells.get(position);
                 switch (position) {
                     case 0:
-                        Chapter2Image image = new Chapter2Image(getOutputMediaFile("chapter2image.png"));
+                        Chapter2Image image = new Chapter2Image(getOutputMediaFile(cell.getFileName()));
                         generateInfo(image, view, cell);
                         break;
                     case 1:
-                        Chapter3Image ch3image = new Chapter3Image(getOutputMediaFile("chapter3image.png"));
+                        Chapter3Image ch3image = new Chapter3Image(getOutputMediaFile(cell.getFileName()));
                         generateInfo(ch3image, view, cell);
                         break;
                     case 2:
-                        Chapter3SecEdImage ch3secimage = new Chapter3SecEdImage(getOutputMediaFile("chapter3image.png"));
+                        Chapter3SecEdImage ch3secimage = new Chapter3SecEdImage(getOutputMediaFile(cell.getFileName()));
                         generateInfo(ch3secimage, view, cell);
                         break;
                     case 3:
-                        Chapter4Image ch4 = new Chapter4Image(getOutputMediaFile("chapter4image.png"));
+                        Chapter4Image ch4 = new Chapter4Image(getOutputMediaFile(cell.getFileName()));
                         generateInfo(ch4, view, cell);
                         break;
                     case 4:
-                        Chapter5Image ch5 = new Chapter5Image(getOutputMediaFile("chapter4image.png"));
+                        Chapter5Image ch5 = new Chapter5Image(getOutputMediaFile(cell.getFileName()));
                         generateInfo(ch5, view, cell);
                         break;
                     case 5:
-                        GlobeImage globe = new GlobeImage(getActivity().getApplicationContext().getResources(), getOutputMediaFile("chapter4image.png"), getOutputMediaFile("texture.png"));
+                        GlobeImage globe = new GlobeImage(getActivity().getApplicationContext().getResources(), getOutputMediaFile(cell.getFileName()), getOutputMediaFile("texture.png"));
                         generateInfo(globe, view, cell);
                         break;
                 }

@@ -26,6 +26,10 @@ public class PictureCell {
         return name;
     }
 
+    public String getFileName(){
+        return this.name.replace(" ", "_");
+    }
+
     public void setName(String name) {
         this.name = name;
     }
