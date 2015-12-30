@@ -14,6 +14,10 @@ import java.io.File;
 import java.util.ArrayList;
 
 import images.GenericImage;
+import images.color.tests.BlackAndWhiteImage;
+import images.color.tests.ColorImage;
+import images.color.tests.MarbleTextureImage;
+import images.color.tests.NoiseImage;
 import images.object.tests.ElevenObjectImage;
 import images.object.tests.OneObjectImage;
 import images.object.tests.SixteenObjectImage;
@@ -58,10 +62,16 @@ public class MainActivityFragment extends Fragment {
         cells.add(new PictureCell(R.drawable.stlargeimage, "Large Image"));
 
         // surface tests
-        cells.add(new PictureCell(R.drawable.sphereimage, "Sphere Image"));
-        cells.add(new PictureCell(R.drawable.triangleimage, "Triangle Image"));
-        cells.add(new PictureCell(R.drawable.twosphereimage, "Two Sphere Image"));
-        cells.add(new PictureCell(R.drawable.twotriangleimage, "Two Triangle Image"));
+        cells.add(new PictureCell(R.drawable.sutsphereimage, "Sphere Image"));
+        cells.add(new PictureCell(R.drawable.suttriangleimage, "Triangle Image"));
+        cells.add(new PictureCell(R.drawable.suttwosphereimage, "Two Sphere Image"));
+        cells.add(new PictureCell(R.drawable.suttwotriangleimage, "Two Triangle Image"));
+
+        // color tests
+        cells.add(new PictureCell(R.drawable.ctblackandwhite, "Black and White Image"));
+        cells.add(new PictureCell(R.drawable.ctcolored, "Colored Image"));
+        cells.add(new PictureCell(R.drawable.ctmarble, "Marble Image"));
+        cells.add(new PictureCell(R.drawable.ctnoise, "Noise Image"));
 
         adapter = new PictureCellAdapter(this.getActivity(), cells);
         list.setAdapter(adapter);
@@ -109,6 +119,18 @@ public class MainActivityFragment extends Fragment {
                         break;
                     case 12:
                         img = new TwoTriangleImage(getOutputMediaFile(cell.getFileName()));
+                        break;
+                    case 13:
+                        img = new BlackAndWhiteImage(getOutputMediaFile(cell.getFileName()));
+                        break;
+                    case 14:
+                        img = new ColorImage(getOutputMediaFile(cell.getFileName()));
+                        break;
+                    case 15:
+                        img = new MarbleTextureImage(getOutputMediaFile(cell.getFileName()));
+                        break;
+                    case 16:
+                        img = new NoiseImage(getOutputMediaFile(cell.getFileName()));
                         break;
                 }
                 generateInfo(img, view, cell);
